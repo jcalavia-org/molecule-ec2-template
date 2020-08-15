@@ -1,0 +1,6 @@
+image:
+  file: .gitpod.Dockerfile
+
+tasks:
+  - init: echo "No command yet configured"
+    command: 'echo "TODO: Replace with command to start project"'
