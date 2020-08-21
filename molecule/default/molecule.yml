@@ -5,10 +5,7 @@ driver:
   name: ec2
 
 lint: |
-  yamllint . && 
-  ansible-lint -p | 
-  ansible-lint-junit -v -o reports/lint-test.xml
-
+  yamllint . && ansible-lint
 
 platforms:
   - name: Ubuntu Server 18.04 LTS

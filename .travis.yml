@@ -3,22 +3,10 @@ os: linux
 dist: bionic
 language: python
 
-virtualenv:
-  system_site_packages: true
-
-# Install ansible
-addons:
-  apt:
-    packages:
-    - python3-pip
-    - python3-setuptools
-    - python3-wheel
-    - python3-lxml
-
 install:
   # Install ansible
   - pip3 install --upgrade pip
-  - pip3 install molecule molecule-ec2 boto3 ansible-lint ansible-lint-junit awscli junit_xml
+  - pip3 install molecule molecule-ec2 boto3 ansible-lint awscli junit_xml
 
   # Check ansible version
   - ansible --version
