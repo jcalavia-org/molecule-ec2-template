@@ -14,7 +14,7 @@ addons:
 install:
   # Install ansible
   - pip3 install --upgrade pip 
-  - pip3 install molecule molecule-ec2 boto3 lxml ansible-lint-junit awscli junit_xml
+  - pip3 install molecule molecule-ec2 boto3 ansible-lint-junit awscli junit_xml
 
   # Check ansible version
   - ansible --version
