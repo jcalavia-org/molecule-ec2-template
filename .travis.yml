@@ -1,5 +1,9 @@
 ---
 language: python
+python:
+  - "3.6"
+virtualenv:
+  system_site_packages: true
 
 # Use the new container infrastructure
 sudo: false
@@ -9,11 +13,12 @@ addons:
   apt:
     packages:
     - python3-pip
+    - python-lxml
 
 install:
   # Install ansible
   - pip3 install --upgrade pip 
-  - pip3 install molecule molecule-ec2 boto3 lxml ansible-lint-junit awscli junit_xml
+  - pip3 install molecule molecule-ec2 boto3 ansible-lint-junit awscli junit_xml
 
   # Check ansible version
   - ansible --version
