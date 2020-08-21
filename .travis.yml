@@ -25,6 +25,7 @@ install:
 script:
   - ./setup.sh
   - molecule lint 
+  - set -e
   - molecule create
   - molecule converge
   - molecule verify
