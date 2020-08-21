@@ -5,4 +5,4 @@ FROM gitpod/workspace-full
 # RUN brew install bastet
 #
 # More information: https://www.gitpod.io/docs/config-docker/
-RUN pip3 install --upgrade pip molecule boto3
+RUN pip3 install --upgrade pip molecule molecule-ec2 boto3 lxml ansible-lint-junit awscli junit_xml

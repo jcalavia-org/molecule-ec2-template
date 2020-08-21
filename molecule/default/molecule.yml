@@ -1,0 +1,24 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: ec2
+
+lint: |
+  mkdir -p reports && ansible-lint -p | ansible-lint-junit -o reports/lint-test.xml
+
+platforms:
+  - name: Ubuntu Server 18.04 LTS
+    image: ami-07ee42ba0209b6d77
+    instance_type: t1.micro
+    vpc_subnet_id: subnet-00e245860955fea19
+
+provisioner:
+  name: ansible
+
+verifier:
+  name: ansible
+
+scenario:
+  lint_sequence:
+    - lint

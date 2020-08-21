@@ -1,0 +1,5 @@
+---
+# tasks file for kk
+- name: NOP Task
+  debug:
+    msg: Testing role
