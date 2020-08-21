@@ -5,7 +5,7 @@ driver:
   name: ec2
 
 lint: |
-  mkdir -p reports && ansible-lint -p | ansible-lint-junit -o reports/lint-test.xml
+  ansible-lint
 
 platforms:
   - name: Ubuntu Server 18.04 LTS
