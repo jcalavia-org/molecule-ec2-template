@@ -5,7 +5,10 @@ driver:
   name: ec2
 
 lint: |
-  ansible-lint -p | ansible-lint-junit -v -o reports/lint-test.xml
+  yamllint . && 
+  ansible-lint -p | 
+  ansible-lint-junit -v -o reports/lint-test.xml
+
 
 platforms:
   - name: Ubuntu Server 18.04 LTS

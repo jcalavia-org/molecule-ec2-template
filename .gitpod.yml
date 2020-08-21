@@ -2,5 +2,8 @@ image:
   file: .gitpod.Dockerfile
 
 tasks:
-  - before: ./setup.sh
-    command: molecule lint
+- command: git config --global user.name $GITHUB_PUBLIC_NAME
+- command: git config --global user.email $GITHUB_PUBLIC_EMAIL
+- command: aws configure set region $AWS_DEFAULT_REGION
+- command: aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
+- command: aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
