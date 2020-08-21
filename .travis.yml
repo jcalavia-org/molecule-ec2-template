@@ -1,9 +1,7 @@
 ---
 os: linux
-dist: xenial
+dist: bionic
 language: python
-python:
-  - "3.8-dev"
 
 # Install ansible
 addons:
@@ -14,7 +12,7 @@ addons:
 install:
   # Install ansible
   - pip3 install --upgrade pip 
-  - pip3 install molecule molecule-ec2 boto3  awscli junit_xml
+  - pip3 install molecule molecule-ec2 boto3 ansible-lint lxml ansible-lint-junit awscli junit_xml
 
   # Check ansible version
   - ansible --version
@@ -25,10 +23,10 @@ install:
 script:
   - ./setup.sh
   - molecule lint 
-  - set -e
   - molecule create
   - molecule converge
   - molecule verify
+  - molecule destroy
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
