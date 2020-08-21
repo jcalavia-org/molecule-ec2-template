@@ -2,6 +2,8 @@
 os: linux
 dist: xenial
 language: python
+python:
+  - "3.5"
 
 virtualenv:
   system_site_packages: true
@@ -11,11 +13,11 @@ addons:
   apt:
     packages:
     - python3-pip
+    - python-lxml
 
 install:
   # Install ansible
   - pip3 install --upgrade pip 
-  - pip3 install lxml
   - pip3 install molecule molecule-ec2 boto3 ansible-lint-junit awscli junit_xml
 
   # Check ansible version
