@@ -1,0 +1,5 @@
+---
+# tasks file for   
+- name: NOP Task
+  debug:
+    msg: Testing roles

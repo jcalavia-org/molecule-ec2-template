@@ -1,0 +1,20 @@
+galaxy_info:
+  author: Jorge Calavia
+  description: Template role for AWS EC2 molecule testing
+  company: JCalavia Org
+
+  license: GPL-3.0-or-later
+  min_ansible_version: 2.9
+
+  # https://galaxy.ansible.com/api/v1/platforms/
+  platforms:
+  - name: Ubuntu
+    versions:
+      - focal
+      - fosa
+
+  # NOTE: A tag is limited to a single word comprised of alphanumeric characters.
+  #       Maximum 20 tags per role.
+  galaxy_tags: []
+
+dependencies: []
