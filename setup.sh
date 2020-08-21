@@ -1,3 +1,8 @@
+echo "Configuring git client ..."
+
+git config --global user.name $GITHUB_PUBLIC_NAME
+git config --global user.email $GITHUB_PUBLIC_EMAIL
+
 echo "Configuring awscli ..."
 
 aws configure set region $AWS_DEFAULT_REGION
