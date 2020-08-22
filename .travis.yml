@@ -5,7 +5,7 @@ language: python
 addons:
   sonarcloud:
     organization: "jcalavia-org"
-    token: ${SONAR_TOKEN}    
+    token: $SONAR_TOKEN  
 
 install:
 - pip3 install --upgrade pip
