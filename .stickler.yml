@@ -9,4 +9,5 @@ linters:
 files:
     ignore:
         - 'molecule/*'
-       
+        - .stickler.yml 
+        - .travis.yml 

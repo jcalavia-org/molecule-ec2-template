@@ -1,7 +1,0 @@
----
-- name: Stickler test
-  hosts: all
-  tasks:
-    - name: "Include molecule-ec2-template"
-      include_role:
-        name: "molecule-ec2-template"

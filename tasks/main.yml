@@ -3,3 +3,15 @@
 - name: NOP Task
   debug:
     msg: Testing roles
+
+- name: Create keypair
+  ec2_key:
+    name: "{{ keypair_name }}"
+  register: keypair
+
+- name: Persist the keypair
+  copy:
+    dest: "{{ keypair_path }}"
+    content: "{{ keypair.key.private_key }}"
+    mode: "0600"
+  when: keypair.changed
