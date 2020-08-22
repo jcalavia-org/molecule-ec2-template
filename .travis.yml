@@ -1,26 +1,28 @@
----
 os: linux
 dist: bionic
 language: python
+addons:
+  sonarcloud:
+    organization: jcalavia-org
+    token:
+      secure: S0T2GTdANsbMPAEE0oTzCpdeuOuvgqEdxlMV4SeMUn/VDqhhGVRNxn9UOLoTBSltQ2O6PHFR+Ikuv+3/J60eqylIkwTOUn/TVx5Il+r+OeZT67QbwW0NGEoMQdczm+HaaGACCj6WjzoFlaCNvUpDrJ6IQfmjVW3nZfaE7ANUGF3vrXmLtDswhgmvGGepSo8lWZI6SO1eRqUIlR5KOSjQ87n0tPtF/V5zO9iYmMIkzEwdeTzHcDkjQyVHw9rnztfU0i4IwgTe8PN3iQSb3IwWR5Cp6QVxPdYl3+81VbBqjacNtwipE5SgHjS8xALmxM8sF4byptMauG/GTMUKCNVcZoNO9Q4MeFqxFNOf+9oEkfjxZwYsApDXfuwysxExl7k9duaQVGluEpUG7FfH4oyYF6JUvYDLenFMlKu5I2Tc9Yfn2ilKNfmf/xzZLBaEWx2hEhdAa0Hd6p77rRUlGbCQ0O8Y4FcDoDFWgq0M0sg48u25Qt5eQSVLi2JHZgkOFoItHmRRNd2Pe1z53426lM9nsE3kE9L6uP+Nq0P40chS3Tkhx55X0Cp367rvY8JOtBicLQnLgW53Qck9y2M2ig/dVaz3V3/FSAxNdgBDTu4GSM4YqgnkoD7MG0+fKpUW6bBj26DYFCKdLYcjtn/w9YKUdaI07OIul3rWuQE6f6KTmT0=
 
+cache:
+  directories:
+  - "$HOME/.sonar/cache"
 install:
-  # Install ansible
-  - pip3 install --upgrade pip
-  - pip3 install molecule molecule-ec2 boto3 ansible-lint awscli junit_xml
-
-  # Check ansible version
-  - ansible --version
-
-  # Create ansible.cfg with correct roles_path
-  - printf '[defaults]\nroles_path=../' >ansible.cfg
-
+- pip3 install --upgrade pip
+- pip3 install molecule molecule-ec2 boto3 ansible-lint awscli junit_xml
+- ansible --version
+- printf '[defaults]\nroles_path=../' >ansible.cfg
 script:
-  - ./setup.sh
-  - molecule lint
-  - molecule create
-  - molecule converge
-  - molecule verify
-  - molecule destroy
-
+- set -e
+- molecule lint
+- set +e
+- molecule create
+- molecule converge
+- ANSIBLE_STDOUT_CALLBACK=junit JUNIT_OUTPUT_DIR=reports molecule verify
+- molecule destroy
+- sonar-scanner
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
