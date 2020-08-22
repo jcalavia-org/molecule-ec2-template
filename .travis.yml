@@ -21,7 +21,7 @@ script:
 - molecule converge
 - ANSIBLE_STDOUT_CALLBACK=junit JUNIT_OUTPUT_DIR=reports molecule verify
 - molecule destroy
-- sonar-scanner -X
+- sonar-scanner
 
 cache:
   directories:
