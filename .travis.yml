@@ -5,9 +5,7 @@ language: python
 addons:
   sonarcloud:
     organization: "jcalavia-org"
-    token:
-      secure: "ja8xbtp3OCWb4eQrJto0aIw/2VORoRsMLbOk9i9s2dPomsbpZ1hmLj4HB9R2dUjVk7Ke146DrNlTxiCzlODchwfOoguWFHyANudZPXehxslMZDn4Rqxg3gu3vLEvgo5u2VtANhxhjeeSvLp/SDIzU9f+KSC/bJTOEgHEvZZNaNt9/IN9u7AYhU/Mgs7JhBAMhFtmUBIU+9XjHuu2ziob++nfOawsD3N6EIBjwOzIUzgMvgW1cLu8L+c36tmZv/NVdGaBW5WMkJ5NRTE7MoAYliAnnWV0aY09eRe7kOtSoQxoPB9yNGws/4zgPkTk5T3cGVWf48VCECFpLwEXUDGCj7CJBX7ivYM4zRSnJ1njfr8Bsbmg/Ok8scV7TGknxsxVAGpUk4fYBUcGDFNpJQUC2/o0TNRMZSK8hLSPBptk61Ib7ROPVWQGtB5GmzWgFQOtvDpQkrMZdMENLfLkkXiZt6vy4zy01aj5aPngUy/t/yvVnn0SfzxzmHhnXOAtCitW5qRuyAGHiTnyaEtUtiW6ILk33Uoe2jweIPdQ4uR48nU4L/xxi8ruuzRNo007jOG1ob9JdM+dio3zW21TFOEDwUNkTu9kWZjdWu3mmPRv5Ulb8IxuVYQq9gb8cZQ161i33LZneVhw4NfpsIDPoeZXsvD7weFmv8yGlwB8N+dlxvw="
-    
+    token: ${SONAR_TOKEN}    
 
 install:
 - pip3 install --upgrade pip
