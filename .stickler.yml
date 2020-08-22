@@ -2,6 +2,9 @@
 linters:
   ansible:
   yamllint:
+  remarklint:
+  shellcheck:
+        shell: bash
 
 files:
     ignore:
