@@ -2,22 +2,13 @@ os: linux
 dist: bionic
 language: python
 
-addons:
-  sonarcloud:
-    organization: jcalavia-org
-    token:
-      secure: iMIbHe0+c8KVSVwEH9pA3UiBCezr8ofi6MdUKkshRmmumbbu3VG19OxdQQ2oHoAu1s5EGuQMVVD9JMLP6aivhFASZWnl7tLiiaC13WJ7iuejEEuQT6YTZAIVPnySLz1KOQuDlhpdZ05hT94lk+ueNOO7fK6IO6wdxVtwp5VritQdfA6gaCVROS1njfJM5G47wdIp49Wy559hw7HLeU//woCHo9I2l81ZcUyxzVKpkdEJucgGO9Hy6ninflb11ogJV6Def2HZte0NdVHSMW3lblIcoTppj0SLBDa1g4sfwcwiwHVxbTdiIlZlABB82GNCmBqi+C3xXNB6KkeGsTBLR0ATQNpWNFCHcIRZhs/+fVse7Inr2JUvvraAEI3iqf8wLtqMZsZpokG3odbRMtsp3A29nFhjTWsLlGmEBWyKMvi6XaC3cCvnqUj1aClOzOxFfZu9M4ePPZULzd8bgYIIhj2pKfollgiCcLI4pMh3nw6Q74AXaERmv8rsUjDAnR2xUrrwbzc8oID1mqZO2tWJdlgw9Ie3RI1+02L31TBTCHvnC7poXYXXTTMEhPSNilLGUWANqc5n/XjXef2gaQ2Uy0PARxsi4SmFay0Rj9hvi6LFmAI3FTgBMmzY2W6gjx8rlFX127fcEmQgJQkAj1g3EdXDNOZPmAlI/zrkRcDoPAc=
-
-cache:
-  directories:
-  - "$HOME/.sonar/cache"
 install:
 - pip3 install --upgrade pip
 - pip3 install molecule molecule-ec2 boto3 ansible-lint awscli junit_xml
 - ansible --version
 - printf '[defaults]\nroles_path=../' >ansible.cfg
 script:
-- ./setup.sh
+- "./setup.sh"
 - set -e
 - molecule lint
 - set +e
@@ -28,3 +19,6 @@ script:
 - sonar-scanner
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
+env:
+  global:
+    secure: ja8xbtp3OCWb4eQrJto0aIw/2VORoRsMLbOk9i9s2dPomsbpZ1hmLj4HB9R2dUjVk7Ke146DrNlTxiCzlODchwfOoguWFHyANudZPXehxslMZDn4Rqxg3gu3vLEvgo5u2VtANhxhjeeSvLp/SDIzU9f+KSC/bJTOEgHEvZZNaNt9/IN9u7AYhU/Mgs7JhBAMhFtmUBIU+9XjHuu2ziob++nfOawsD3N6EIBjwOzIUzgMvgW1cLu8L+c36tmZv/NVdGaBW5WMkJ5NRTE7MoAYliAnnWV0aY09eRe7kOtSoQxoPB9yNGws/4zgPkTk5T3cGVWf48VCECFpLwEXUDGCj7CJBX7ivYM4zRSnJ1njfr8Bsbmg/Ok8scV7TGknxsxVAGpUk4fYBUcGDFNpJQUC2/o0TNRMZSK8hLSPBptk61Ib7ROPVWQGtB5GmzWgFQOtvDpQkrMZdMENLfLkkXiZt6vy4zy01aj5aPngUy/t/yvVnn0SfzxzmHhnXOAtCitW5qRuyAGHiTnyaEtUtiW6ILk33Uoe2jweIPdQ4uR48nU4L/xxi8ruuzRNo007jOG1ob9JdM+dio3zW21TFOEDwUNkTu9kWZjdWu3mmPRv5Ulb8IxuVYQq9gb8cZQ161i33LZneVhw4NfpsIDPoeZXsvD7weFmv8yGlwB8N+dlxvw=
