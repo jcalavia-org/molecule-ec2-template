@@ -1,26 +1,28 @@
----
 os: linux
 dist: bionic
 language: python
 
+addons:
+  sonarcloud:
+    organization: "jcalavia-org"
+    token: $SONAR_TOKEN  
+
 install:
-  # Install ansible
-  - pip3 install --upgrade pip
-  - pip3 install molecule molecule-ec2 boto3 ansible-lint awscli junit_xml
-
-  # Check ansible version
-  - ansible --version
-
-  # Create ansible.cfg with correct roles_path
-  - printf '[defaults]\nroles_path=../' >ansible.cfg
-
+- pip3 install --upgrade pip
+- pip3 install molecule molecule-ec2 boto3 ansible-lint awscli junit_xml
+- ansible --version
+- printf '[defaults]\nroles_path=../' >ansible.cfg
 script:
-  - ./setup.sh
-  - molecule lint
-  - molecule create
-  - molecule converge
-  - molecule verify
-  - molecule destroy
+- "./setup.sh"
+- set -e
+- molecule lint
+- set +e
+- molecule create
+- molecule converge
+- ANSIBLE_STDOUT_CALLBACK=junit JUNIT_OUTPUT_DIR=reports molecule verify
+- molecule destroy
+- sonar-scanner
 
-notifications:
-  webhooks: https://galaxy.ansible.com/api/v1/notifications/
+cache:
+  directories:
+    - '$HOME/.sonar/cache'
