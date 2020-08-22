@@ -16,6 +16,7 @@ install:
 - ansible --version
 - printf '[defaults]\nroles_path=../' >ansible.cfg
 script:
+- ./setup.sh
 - set -e
 - molecule lint
 - set +e
