@@ -21,5 +21,6 @@ script:
 
 cache:
   directories:
-    - '$HOME/.sonar/cache'
+    - '$HOME/.cache/pip'
     - '$HOME/virtualenv'
+    - '$HOME/.sonar/cache'
