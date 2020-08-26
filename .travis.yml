@@ -16,4 +16,3 @@ cache:
   directories:
     - '$HOME/.cache/pip'
     - '$HOME/virtualenv'
-    - '$HOME/.sonar/cache'
