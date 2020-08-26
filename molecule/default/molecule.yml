@@ -20,7 +20,6 @@ verifier:
   name: ansible
 
 scenario:
-  name: default
   lint_sequence:
     - lint
   test_sequence:
