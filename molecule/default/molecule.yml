@@ -22,3 +22,15 @@ verifier:
 scenario:
   lint_sequence:
     - lint
+  test_sequence:
+    - destroy
+    - syntax
+    - lint
+    - create
+    - prepare
+    - converge
+    - side_effect
+    - converge
+    - idempotence
+    - verify
+    - destroy

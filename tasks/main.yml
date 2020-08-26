@@ -1,5 +1,5 @@
 ---
-# tasks file for   
+# tasks file for molecule-ec2-template
 - name: NOP Task
   debug:
     msg: Testing roles

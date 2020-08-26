@@ -13,10 +13,18 @@ install:
 - ansible --version
 - printf '[defaults]\nroles_path=../' >ansible.cfg
 script:
+<<<<<<< HEAD
 - aws configure set region $AWS_DEFAULT_REGION
 - aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
 - aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
 - molecule test
+=======
+- "./setup.sh"
+- molecule create
+- molecule converge
+- ANSIBLE_STDOUT_CALLBACK=junit JUNIT_OUTPUT_DIR=reports molecule verify
+- molecule destroy
+>>>>>>> master
 - sonar-scanner
 
 cache:
