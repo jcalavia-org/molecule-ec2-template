@@ -1,0 +1,9 @@
+---
+- name: Side Effect
+  hosts: all
+  gather_facts: false
+
+  tasks:
+  - name:  Side effect 
+    debug:
+      msg: Simulate conditions which can break role 
