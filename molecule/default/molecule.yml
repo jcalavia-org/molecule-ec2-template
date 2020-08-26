@@ -20,5 +20,18 @@ verifier:
   name: ansible
 
 scenario:
+  name: default
   lint_sequence:
     - lint
+  test_sequence:
+    - destroy
+    - syntax
+    - lint
+    - create
+    - prepare
+    - converge
+    - side_effect
+    - converge
+    - idempotence
+    - verify
+    - destroy

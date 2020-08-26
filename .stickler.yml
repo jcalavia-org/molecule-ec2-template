@@ -7,7 +7,5 @@ linters:
         shell: bash
 
 files:
-    ignore:
-        - 'molecule/*'
-        - .stickler.yml 
-        - .travis.yml 
+  ignore:
+    - 'molecule/*'
