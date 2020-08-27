@@ -2,24 +2,17 @@ os: linux
 dist: bionic
 language: python
 
-addons:
-  sonarcloud:
-    organization: "jcalavia-org"
-    token: $SONAR_TOKEN  
-
 install:
 - pip3 install --upgrade pip
-- pip3 install molecule molecule-ec2 boto3 ansible-lint awscli junit_xml
-- ansible --version
-- printf '[defaults]\nroles_path=../' >ansible.cfg
+- pip3 install molecule molecule-ec2 boto3 ansible-lint awscli
+
 script:
-- "./setup.sh"
-- molecule create
-- molecule converge
-- ANSIBLE_STDOUT_CALLBACK=junit JUNIT_OUTPUT_DIR=reports molecule verify
-- molecule destroy
-- sonar-scanner
+- aws configure set region $AWS_DEFAULT_REGION
+- aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
+- aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
+- molecule test
 
 cache:
   directories:
-    - '$HOME/.sonar/cache'
+    - '$HOME/.cache/pip'
+    - '$HOME/virtualenv'
